@@ -38,7 +38,7 @@
     </div>
     <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
       <a href="#" data-section="today-in-space"
-        class="nav-link flex items-center space-x-3 px-3 py-2.5 bg-blue-500/10 text-blue-400 rounded-lg font-medium transition-colors">
+        class="nav-link flex items-center space-x-3 px-3 py-2.5 text-slate-300 hover:bg-slate-800 rounded-lg font-medium transition-colors">
         <i class="fas fa-image w-5"></i>
         <span>Today in Space</span>
       </a>
@@ -113,7 +113,7 @@
 
   <div class="ml-0 lg:ml-64 mt-[90px]">
     <section id="today-in-space" data-section="today-in-space"
-      class="app-section min-h-screen py-4 lg:py-8 px-4 lg:px-6 bg-slate-900/50">
+      class="app-section hidden min-h-screen py-4 lg:py-8 px-4 lg:px-6 bg-slate-900/50">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <div>
@@ -229,33 +229,33 @@
               <div class="flex flex-col justify-between">
                 <div>
                   <div class="flex items-center gap-3 mb-4">
-                    <span
+                    <span id="featured"
                       class="px-4 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold flex items-center gap-2">
                       <i class="fas fa-star"></i>
                       Featured Launch
                     </span>
-                    <span class="px-4 py-1.5 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold">
+                    <span id = "coming-abbrev" class="px-4 py-1.5 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold">
                       Go
                     </span>
                   </div>
-                  <h3 class="text-3xl font-bold mb-3 leading-tight">
+                  <h3 id="coming-name" class="text-3xl font-bold mb-3 leading-tight">
                     Starship Flight 3
                   </h3>
                   <div class="flex flex-col xl:flex-row xl:items-center gap-4 mb-6 text-slate-400">
                     <div class="flex items-center gap-2">
                       <i class="fas fa-building"></i>
-                      <span>SpaceX</span>
+                      <span id="service-provider">SpaceX</span>
                     </div>
                     <div class="flex items-center gap-2">
                       <i class="fas fa-rocket"></i>
-                      <span>Starship</span>
+                      <span id="rocket">Starship</span>
                     </div>
                   </div>
                   <div
                     class="inline-flex items-center gap-3 px-6 py-3 bg-linear-to-r from-blue-500/20 to-purple-500/20 rounded-xl mb-6">
                     <i class="fas fa-clock text-2xl text-blue-400"></i>
                     <div>
-                      <p class="text-2xl font-bold text-blue-400">2</p>
+                      <p id="days-until-launch" class="text-2xl font-bold text-blue-400">2</p>
                       <p class="text-xs text-slate-400">Days Until Launch</p>
                     </div>
                   </div>
@@ -265,31 +265,31 @@
                         <i class="fas fa-calendar"></i>
                         Launch Date
                       </p>
-                      <p class="font-semibold">March 14, 2024</p>
+                      <p id="lunch-date" class="font-semibold">March 14, 2024</p>
                     </div>
                     <div class="bg-slate-900/50 rounded-xl p-4">
                       <p class="text-xs text-slate-400 mb-1 flex items-center gap-2">
                         <i class="fas fa-clock"></i>
                         Launch Time
                       </p>
-                      <p class="font-semibold">12:00 PM UTC</p>
+                      <p id="lunch-time" class="font-semibold">12:00 PM UTC</p>
                     </div>
                     <div class="bg-slate-900/50 rounded-xl p-4">
                       <p class="text-xs text-slate-400 mb-1 flex items-center gap-2">
                         <i class="fas fa-map-marker-alt"></i>
                         Location
                       </p>
-                      <p class="font-semibold text-sm">Starbase, Texas</p>
+                      <p id="location" class="font-semibold text-sm">Starbase, Texas</p>
                     </div>
                     <div class="bg-slate-900/50 rounded-xl p-4">
                       <p class="text-xs text-slate-400 mb-1 flex items-center gap-2">
                         <i class="fas fa-globe"></i>
                         Country
                       </p>
-                      <p class="font-semibold">USA</p>
+                      <p id="country" class="font-semibold">USA</p>
                     </div>
                   </div>
-                  <p class="text-slate-300 leading-relaxed mb-6">
+                  <p id="description" class="text-slate-300 leading-relaxed mb-6">
                     The third integrated flight test of Starship. The
                     prototype for the heavy-lift launch vehicle is currently
                     being built by SpaceX.
@@ -313,10 +313,8 @@
               </div>
               <div class="relative">
                 <div class="relative h-full min-h-[400px] rounded-2xl overflow-hidden bg-slate-900/50">
-                  <!-- Placeholder image/icon since we can't load external images reliably without correct URLs -->
-                  <div class="flex items-center justify-center h-full min-h-[400px] bg-slate-800">
-                    <i class="fas fa-rocket text-9xl text-slate-700/50"></i>
-                  </div>
+                  <img id="coming-img" src="" alt="name" class="w-full h-full object-cover"
+                    onerror="this.onerror=null; this.src='/images/launch-placeholder.png';">
                   <div class="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent"></div>
                 </div>
               </div>
