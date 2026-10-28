@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+
+# tailwind css input
+src/
+
+# Editor settings
+.vscode/
+
+#packages json fils
+package-lock.json
+package.json

@@ -11,8 +11,11 @@ const todayApodBtn = document.querySelector("#today-apod-btn")
 
 
 
-async function getIt(dateFromUser) {
-    const res = await fetch(`https://science.nasa.gov/wp-json/wp/v2/apod-basic/${dateFromUser}`)
+async function getIt(dateFromUser = "", url = "https://science.nasa.gov/wp-json/wp/v2/apod-basic/") {
+    // const res = await fetch(`https://science.nasa.gov/wp-json/wp/v2/apod-basic/${dateFromUser}`)
+
+    const res = await fetch(`${url}${dateFromUser}`)
+
     const end = await res.json()
     return end
 }
@@ -60,7 +63,7 @@ function dateToUser(DateToTurn) {
     DateToTurn.shift()
     DateToTurn[1] = DateToTurn[1].concat(",")
     DateToTurn = DateToTurn.join(" ")
-    console.log(DateToTurn)
+    // console.log(DateToTurn)
     return DateToTurn
 }
 
@@ -102,7 +105,7 @@ activeElement = {
         sectionEle.classList.add("hidden")
     },
 
-    activate: (nameOfEle) => {
+    activate(nameOfEle) {
         if (nameOfEle === undefined) { return }
         const sidebarEle = document.querySelector(`a[data-section="${nameOfEle}"]`)
         const sectionEle = document.querySelector(`#${nameOfEle}`)
@@ -111,7 +114,7 @@ activeElement = {
         sidebarEle.classList.remove("text-slate-300", "hover:bg-slate-800")
 
         sectionEle.classList.remove("hidden")
-        activeElement.lastActiveEle = nameOfEle
+        this.lastActiveEle = nameOfEle
     }
 
 }
@@ -124,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.body.addEventListener("click", (e) => {
     console.log(e.target.closest("a"))
     clickedEle = e.target.closest("a")
-    targetAtt = clickedEle.getAttribute("data-section")
+    targetAtt = clickedEle?.getAttribute("data-section")
     sideLinks = ["today-in-space", "launches", "planets"]
     if (sideLinks.includes(targetAtt)) {
         activeElement.deActivate(activeElement.lastActiveEle)
@@ -134,333 +137,42 @@ document.body.addEventListener("click", (e) => {
 
 // سحب محتوى صفحة الرحلات 
 
-
-
-results = {
-    "id": "69ebbcd2-b257-4070-9ef9-21e7d1f8a883",
-    "url": "https://lldev.thespacedevs.com/2.3.0/launches/69ebbcd2-b257-4070-9ef9-21e7d1f8a883/",
-    "name": "H3-24 | Martian Moons eXploration (MMX)",
-    "response_mode": "normal",
-    "slug": "h3-24-martian-moons-exploration-mmx", //اول شيئ اريده 1
-    "launch_designator": null,
-    "status": {
-        "id": 1,
-        "name": "Go for Launch",
-        "abbrev": "Go", // سأستخدم هذا 0
-        "description": "Current T-0 confirmed by official or reliable sources."
-    },
-    "last_updated": "2026-10-10T06:02:48Z",
-    "net": "2026-10-19T19:41:03Z",
-    "net_precision": {
-        "id": 0,
-        "name": "Second",
-        "abbrev": "SEC",
-        "description": "The T-0 is accurate to the second."
-    },
-    "window_end": "2026-10-19T19:41:03Z",
-    "window_start": "2026-10-19T19:41:03Z", // سأستخدم هذا 6
-    "image": {
-        "id": 2493,
-        "name": "H3-24 liftoff (HTV-X1)",
-        "image_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/h3-24_liftoff__image_20251028184029.jpeg", // سأستخدم هذا 10
-        "thumbnail_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/h3-24_liftoff__image_thumbnail_20251028184029.jpeg",
-        "credit": "Mitsubishi Heavy Industries",
-        "license": {
-            "id": 1,
-            "name": "Unknown",
-            "priority": 9,
-            "link": null
-        },
-        "single_use": false,
-        "variants": []
-    },
-    "infographic": null,
-    "probability": null,
-    "weather_concerns": null,
-    "failreason": "",
-    "hashtag": null,
-    "launch_service_provider": {
-        "response_mode": "list",
-        "id": 98,
-        "url": "https://lldev.thespacedevs.com/2.3.0/agencies/98/",
-        "name": "Mitsubishi Heavy Industries", // سأستخدم هذا 2
-        "abbrev": "MHI",
-        "type": {
-            "id": 3,
-            "name": "Commercial"
-        }
-    },
-    "rocket": {
-        "id": 7769,
-        "configuration": {
-            "response_mode": "list",
-            "id": 204,
-            "url": "https://lldev.thespacedevs.com/2.3.0/launcher_configurations/204/",
-            "name": "H3-24", // سأستخدم هذا 3
-            "families": [
-                {
-                    "response_mode": "list",
-                    "id": 86,
-                    "name": "H3"
-                }
-            ],
-            "full_name": "H3-24",
-            "variant": "24"
-        }
-    },
-    "mission": {
-        "id": 6287,
-        "name": "Martian Moons eXploration (MMX)",
-        "type": "Planetary Science",
-        "description": "MMX is a Japanese scientific mission to land on Phobos, one of the two moons of Mars, to collect samples before bringing them back to Earth.\r\n\r\nThe mission includes a small French/German rover to explore the surface of Phobos.",
-        "image": null,
-        "orbit": {
-            "id": 19,
-            "name": "Mars Orbit",
-            "abbrev": "Mars",
-            "celestial_body": {
-                "response_mode": "list",
-                "id": 1,
-                "name": "Earth"
-            }
-        },
-        "agencies": [],
-        "info_urls": [],
-        "vid_urls": []
-    },
-    "pad": {
-        "id": 209,
-        "url": "https://lldev.thespacedevs.com/2.3.0/pads/209/",
-        "active": true,
-        "agencies": [
-            {
-                "response_mode": "normal",
-                "id": 37,
-                "url": "https://lldev.thespacedevs.com/2.3.0/agencies/37/",
-                "name": "Japan Aerospace Exploration Agency",
-                "abbrev": "JAXA",
-                "type": {
-                    "id": 1,
-                    "name": "Government"
-                },
-                "featured": true, //سأستخدم هذا 01
-                "country": [
-                    {
-                        "id": 28,
-                        "name": "Japan",
-                        "alpha_2_code": "JP",
-                        "alpha_3_code": "JPN",
-                        "nationality_name": "Japanese",
-                        "nationality_name_composed": "Nippo"
-                    }
-                ],
-                // سأستخدم هذا 9
-                "description": "The Japan Aerospace Exploration Agency (JAXA) is Japan's national aero-space agency. Through the merger of three previously independent organizations, JAXA was formed on 1 October 2003. JAXA is responsible for research, technology development and the launch of satellites into orbit, and is involved in many more advanced missions, such as asteroid exploration and possible manned exploration of the Moon. JAXA launch their Epsilon vehicle from the Uchinoura Space Center and their H-II vehicles from the Tanegashima Space Center.",
-                "administrator": "Administrator: Hiroshi Yamakawa",
-                "founding_year": 2003,
-                "launchers": "H-II",
-                "spacecraft": "",
-                "parent": null,
-                "image": {
-                    "id": 16,
-                    "name": "[AUTO] Japan Aerospace Exploration Agency - image",
-                    "image_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/japan2520aerospace2520exploration2520agency_image_20190207032440.jpeg",
-                    "thumbnail_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305184621.jpeg",
-                    "credit": null,
-                    "license": {
-                        "id": 1,
-                        "name": "Unknown",
-                        "priority": 9,
-                        "link": null
-                    },
-                    "single_use": true,
-                    "variants": []
-                },
-                "logo": {
-                    "id": 151,
-                    "name": "[AUTO] Japan Aerospace Exploration Agency - logo",
-                    "image_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/japan2520aerospace2520exploration2520agency_logo_20190207032440.png",
-                    "thumbnail_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305185023.png",
-                    "credit": null,
-                    "license": {
-                        "id": 1,
-                        "name": "Unknown",
-                        "priority": 9,
-                        "link": null
-                    },
-                    "single_use": true,
-                    "variants": []
-                },
-                "social_logo": {
-                    "id": 69,
-                    "name": "[AUTO] Japan Aerospace Exploration Agency - social_logo",
-                    "image_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/japan2520aerospace2520exploration2520agency_nation_20230531052930.png",
-                    "thumbnail_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_thumbnail_20240305184813.png",
-                    "credit": null,
-                    "license": {
-                        "id": 1,
-                        "name": "Unknown",
-                        "priority": 9,
-                        "link": null
-                    },
-                    "single_use": true,
-                    "variants": []
-                }
-            }
-        ],
-        "name": "Yoshinobu Launch Complex LP-2",
-        "image": {
-            "id": 1751,
-            "name": "H-IIB 304 liftoff from LP-2 (HTV-3)",
-            "image_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/h-iib_304_lifto_image_20240325125154.jpg",
-            "thumbnail_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/h-iib_304_lifto_image_thumbnail_20240325125154.jpeg",
-            "credit": "JAXA",
-            "license": {
-                "id": 9,
-                "name": "JAXA Image Usage Policy",
-                "priority": 8,
-                "link": "https://global.jaxa.jp/policy.html"
-            },
-            "single_use": false,
-            "variants": []
-        },
-        "description": "",
-        "info_url": null,
-        "wiki_url": "https://en.wikipedia.org/wiki/Yoshinobu_Launch_Complex",
-        "map_url": "https://www.google.com/maps?q=30.400938,130.97564",
-        "latitude": 30.400938,
-        "longitude": 130.97564,
-        "country": {
-            "id": 28,
-            "name": "Japan", //سأستخدم هذا 8
-            "alpha_2_code": "JP",
-            "alpha_3_code": "JPN",
-            "nationality_name": "Japanese",
-            "nationality_name_composed": "Nippo"
-        },
-        "map_image": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/map_images/pad_yoshinobu_launch_complex_lp-2_20230707124715.jpg",
-        "total_launch_count": 18,
-        "orbital_launch_attempt_count": 18,
-        "fastest_turnaround": "P57DT1H51M15S",
-        "location": {
-            "response_mode": "normal",
-            "id": 26,
-            "url": "https://lldev.thespacedevs.com/2.3.0/locations/26/",
-            "name": "Tanegashima Space Center, Japan", // سأستخدم هذا 7
-            "celestial_body": {
-                "response_mode": "normal",
-                "id": 1,
-                "name": "Earth",
-                "type": {
-                    "id": 1,
-                    "name": "Planet"
-                },
-                "diameter": 12742000.0,
-                "mass": 5.972168e+24,
-                "gravity": 9.80655,
-                "length_of_day": "1 00:00:00",
-                "atmosphere": true,
-                "image": {
-                    "id": 2040,
-                    "name": "Earth (Apollo 17)",
-                    "image_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/earth_2528apol_image_20240402194304.jpeg",
-                    "thumbnail_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/earth_2528apol_image_thumbnail_20240402194305.jpeg",
-                    "credit": "NASA",
-                    "license": {
-                        "id": 4,
-                        "name": "NASA Image and Media Guidelines",
-                        "priority": 0,
-                        "link": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
-                    },
-                    "single_use": true,
-                    "variants": []
-                },
-                "description": "Earth is the third planet from the Sun and the only astronomical object known to harbor life.",
-                "wiki_url": "https://en.wikipedia.org/wiki/Earth",
-                "total_attempted_launches": 7636,
-                "successful_launches": 7079,
-                "failed_launches": 557,
-                "total_attempted_landings": 1377,
-                "successful_landings": 1328,
-                "failed_landings": 49
-            },
-            "active": true,
-            "country": {
-                "id": 28,
-                "name": "Japan",
-                "alpha_2_code": "JP",
-                "alpha_3_code": "JPN",
-                "nationality_name": "Japanese",
-                "nationality_name_composed": "Nippo"
-            },
-            "description": "The Tanegashima Space Center is the largest rocket-launch complex in Japan. It is located on the southeastern tip of Tanegashima, an island located south of Kyushu, an island and region and Japan. It was established in 1969 when the National Space Development Agency of Japan (NASDA) was formed, and is now run by JAXA. The activities that take place at TNSC include assembly, testing, launching, and tracking satellites, as well as rocket engine firing tests.",
-            "image": {
-                "id": 2223,
-                "name": "Tanegashima Space Center",
-                "image_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/tanegashima_spa_image_20240920081514.jpg",
-                "thumbnail_url": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/images/tanegashima_spa_image_thumbnail_20240920081514.jpeg",
-                "credit": "JAXA",
-                "license": {
-                    "id": 9,
-                    "name": "JAXA Image Usage Policy",
-                    "priority": 8,
-                    "link": "https://global.jaxa.jp/policy.html"
-                },
-                "single_use": true,
-                "variants": []
-            },
-            "map_image": "https://thespacedevs-dev.nyc3.digitaloceanspaces.com/media/map_images/location_26_20200803142507.jpg",
-            "longitude": 130.97,
-            "latitude": 30.4,
-            "timezone_name": "Asia/Tokyo",
-            "total_launch_count": 99,
-            "total_landing_count": 0
-        }
-    },
-    "webcast_live": false,
-    "program": [],
-    "orbital_launch_attempt_count": 7416,
-    "location_launch_attempt_count": 100,
-    "pad_launch_attempt_count": 19,
-    "agency_launch_attempt_count": 59,
-    "orbital_launch_attempt_count_year": 243,
-    "location_launch_attempt_count_year": 3,
-    "pad_launch_attempt_count_year": 3,
-    "agency_launch_attempt_count_year": 3
+function creatFinslCurrentResult(currentResult) {
+    const storedLunchDateTimeRemain = creatLunchDateTimeRemain(currentResult)
+    return {
+        abbrev: currentResult.status.abbrev,
+        featured: currentResult.pad.agencies[0]?.featured,
+        imageUrl: currentResult.image.image_url,
+        name: currentResult.name,
+        serviceProvider: currentResult.launch_service_provider.name,
+        rocket: currentResult.rocket.configuration.name,
+        lunchDate: storedLunchDateTimeRemain.lunchDateDate,
+        lunchTime: storedLunchDateTimeRemain.lunchDateTime,
+        location: currentResult.pad.location.name,
+        country: currentResult.pad.country.name,
+        description: currentResult.mission.description,
+        remainingTime: storedLunchDateTimeRemain.remainingTime
+    }
 }
 
+//سؤال هنا
 
-const thisDay = new Date()
-const lunchDate = new Date(results.window_start)
-// التاريخ فقط
-const optionsDate = { timeZone: 'UTC', year: 'numeric', month: 'long', day: 'numeric' }
-const lunchDateDate = lunchDate.toLocaleDateString(undefined, optionsDate)
-// الوقت فقط
-const optionsTime = { timeZone: 'UTC', hour: '2-digit', minute: '2-digit' }
-const lunchDateTime = lunchDate.toLocaleTimeString(undefined, optionsTime).concat(" UTC")
-//الوقت المتبقي
-const remainingTime = ((lunchDate.getTime() - thisDay.getTime()) / (1000 * 60 * 60 * 24)).toFixed(1)
+function creatLunchDateTimeRemain(currentResult) {
+    const thisDay = new Date()
+    const lunchDate = new Date(currentResult.window_start)
+    const optionsDate = { timeZone: 'UTC', year: 'numeric', month: 'long', day: 'numeric' }
+    const optionsTime = { timeZone: 'UTC', hour: '2-digit', minute: '2-digit' }
 
-
-
-
-
-finalRes = {
-    abbrev: results.status.abbrev,
-    featured: results.pad.agencies[0].featured,
-    imageUrl: results.image.image_url,
-    name: results.name,
-    serviceProvider: results.launch_service_provider.name,
-    rocket: results.rocket.configuration.name,
-    lunchDate: lunchDateDate,
-    lunchTime: lunchDateTime,
-    location: results.pad.location.name,
-    country: results.pad.country.name,
-    description: results.mission.description,
-    remainingTime: remainingTime
+    const data = {
+        // التاريخ فقط
+        lunchDateDate: lunchDate.toLocaleDateString(undefined, optionsDate),
+        // الوقت فقط
+        lunchDateTime: lunchDate.toLocaleTimeString(undefined, optionsTime),
+        //الوقت المتبقي
+        remainingTime: ((lunchDate.getTime() - thisDay.getTime()) / (1000 * 60 * 60 * 24)).toFixed(1)
+    }
+    return data
 }
-console.log(finalRes)
-
 
 const comingImg = document.querySelector("#coming-img")
 const featured = document.querySelector("#featured")
@@ -475,17 +187,344 @@ const locationTag = document.querySelector("#location")
 const country = document.querySelector("#country")
 const description = document.querySelector("#description")
 
-comingImg.src = finalRes.imageUrl
-finalRes.featured || featured.remove()
-comingName.lastChild.textContent = finalRes.name
-comingAbbrev.lastChild.textContent = finalRes.abbrev
-serviceProvider.lastChild.textContent = finalRes.serviceProvider
-rocket.lastChild.textContent = finalRes.rocket
-daysUntilLaunch.lastChild.textContent = finalRes.remainingTime
-lunchDateTag.lastChild.textContent = finalRes.lunchDate
-lunchTime.lastChild.textContent = finalRes.lunchTime
-locationTag.lastChild.textContent = finalRes.location
-country.lastChild.textContent = finalRes.country
-description.lastChild.textContent = finalRes.description
+function creatMainCard(results) {
+    const result = creatFinslCurrentResult(results[0])
+    comingImg.src = result.imageUrl
+    result.featured || featured.remove()
+    comingName.lastChild.textContent = result.name
+    comingAbbrev.lastChild.textContent = result.abbrev
+    serviceProvider.lastChild.textContent = result.serviceProvider
+    rocket.lastChild.textContent = result.rocket
+    daysUntilLaunch.lastChild.textContent = result.remainingTime
+    lunchDateTag.lastChild.textContent = result.lunchDate
+    lunchTime.lastChild.textContent = result.lunchTime
+    locationTag.lastChild.textContent = result.location
+    country.lastChild.textContent = result.country
+    description.lastChild.textContent = result.description
+}
 
 
+// تحديد الكروت ووضع البيانات فيها
+
+const mainCard = document.querySelector("#main-card")
+mainCard.remove()
+let eterator = 0
+
+function fillCard(card, dataSource) {
+    const cardCopy = card.cloneNode(true)
+    const cardObj = {
+        cardComingImg: cardCopy.querySelector("#card-coming-img"),
+        cardAbbrev: cardCopy.querySelector("#card-abbrev"),
+        cardName: cardCopy.querySelector("#card-name"),
+        cardServiceProvider: cardCopy.querySelector("#card-service-provider"),
+        cardLunchDate: cardCopy.querySelector("#card-lunch-date"),
+        cardLunchTime: cardCopy.querySelector("#card-lunch-time"),
+        cardRocket: cardCopy.querySelector("#card-rocket"),
+        cardLocation: cardCopy.querySelector("#card-location")
+    }
+
+    cardObj.cardComingImg.src = dataSource.imageUrl
+    cardObj.cardName.lastChild.textContent = dataSource.name
+    cardObj.cardAbbrev.lastChild.textContent = dataSource.abbrev
+    cardObj.cardServiceProvider.lastChild.textContent = dataSource.serviceProvider
+    cardObj.cardRocket.lastChild.textContent = dataSource.rocket
+    cardObj.cardLunchDate.lastChild.textContent = dataSource.lunchDate
+    cardObj.cardLunchTime.lastChild.textContent = dataSource.lunchTime
+    cardObj.cardLocation.lastChild.textContent = dataSource.location
+    cardCopy.removeAttribute('id')
+    for (const element of Object.values(cardObj)) {
+        element.removeAttribute('id')
+    }
+
+    return cardCopy
+
+
+}
+
+
+const launchesGrid = document.querySelector("#launches-grid")
+
+
+getIt("", "https://lldev.thespacedevs.com/2.3.0/launches/upcoming/?limit=10").then((data) => {
+    console.log("----data-----\n", data)
+    const results = data.results
+    creatMainCard(results)
+    for (const launchData of results.slice(1)) {
+        let data = creatFinslCurrentResult(launchData)
+        launchesGrid.appendChild(fillCard(mainCard, data))
+    }
+})
+
+
+const imageSrc = {
+    earth: 'images/earth.png',
+    favicon: 'images/favicon.png',
+    jupiter: 'images/jupiter.png',
+    mars: 'images/mars.png',
+    mercury: 'images/mercury.png',
+    neptune: 'images/neptune.png',
+    saturn: 'images/saturn.png',
+    uranus: 'images/uranus.png',
+    venus: 'images/venus.png'
+}
+
+const renderHolders = {
+    planetImage: document.querySelector('#planet-detail-image'),
+    planetName: document.querySelector('#planet-detail-name'),
+    planetDescription: document.querySelector('#planet-detail-description'),
+    planetDistance: document.querySelector('#planet-distance'),
+    planetRadius: document.querySelector('#planet-radius'),
+    planetMass: document.querySelector('#planet-mass'),
+    planetDensity: document.querySelector('#planet-density'),
+    planetOrbitalPeriod: document.querySelector('#planet-orbital-period'),
+    planetRotation: document.querySelector('#planet-rotation'),
+    planetMoons: document.querySelector('#planet-moons'),
+    planetGravity: document.querySelector('#planet-gravity'),
+    planetDiscoverer: document.querySelector('#planet-discoverer'),
+    planetDiscoveryDate: document.querySelector('#planet-discovery-date'),
+    planetBodyType: document.querySelector('#planet-body-type'),
+    planetVolume: document.querySelector('#planet-volume'),
+    planetPerihelion: document.querySelector('#planet-perihelion'),
+    planetAphelion: document.querySelector('#planet-aphelion'),
+    planetEccentricity: document.querySelector('#planet-eccentricity'),
+    planetInclination: document.querySelector('#planet-inclination'),
+    planetAxialTilt: document.querySelector('#planet-axial-tilt'),
+    planetTemp: document.querySelector('#planet-temp'),
+    planetEscape: document.querySelector('#planet-escape'),
+    quickFacts: {
+        planetMass: document.querySelector('#planet-facts [data-field="mass"]'),
+        planetSurfaceGravity: document.querySelector('#planet-facts [data-field="surface-gravity"]'),
+        planetDensity: document.querySelector('#planet-facts [data-field="density"]'),
+        planetAxialTilt: document.querySelector('#planet-facts [data-field="axial-tilt"]')
+    }
+}
+
+
+
+
+const planetColors = {
+    non: "#000000",
+    uranus: "#22d3ee",
+    neptune: "#2563eb",
+    jupiter: "#fdba74",
+    mars: "#ef4444",
+    mercury: "#6b7280",
+    saturn: "#fde047",
+    earth: "#3b82f6",
+    venus: "#fb923c"
+}
+
+const planetType = {
+    non: {
+        background: ["black"]
+    },
+    "Ice Giant": {
+        background: ["bg-blue-500/50", "text-blue-200"],
+        name: "Ice Giant"
+    },
+    "Terrestrial": {
+        background: ["bg-orange-500/50", "text-orange-200"],
+        name: "Terrestrial"
+    },
+    "Gas Giant": {
+        background: ["bg-purple-500/50", "text-purple-200"],
+        name: "Gas Giant"
+    }
+}
+
+
+
+
+const planetRenderRowTemplate = document.querySelector('#planet-comparison-tbody [data-field="planet-render-row-template"]')
+function renderRow(planet) {
+    const planetRow = planetRenderRowTemplate.cloneNode(true)
+    console.log(planetRow)
+    console.log(planetRow.querySelector('[data-field="background-color"]'))
+    const planetRowRenderHolders = {
+        backGround: planetRow.querySelector('[data-field="background-color"]'),
+        name: planetRow.querySelector('[data-field="name"]'),
+        distance: planetRow.querySelector('[data-field="distance"]'),
+        diameter: planetRow.querySelector('[data-field="diameter"]'),
+        mass: planetRow.querySelector('[data-field="mass"]'),
+        orbitalPeriod: planetRow.querySelector('[data-field="orbital-period"]'),
+        moons: planetRow.querySelector('[data-field="moons"]'),
+        type: planetRow.querySelector('[data-field="type"]'),
+        typeBackGround: planetRow.querySelector('[data-field="type"]'),
+    }
+    planetRowRenderHolders.backGround.style.backgroundColor = planet.backGround;
+    planetRowRenderHolders.name.textContent = planet.name;
+    planetRowRenderHolders.distance.textContent = planet.distance;
+    planetRowRenderHolders.diameter.textContent = planet.diameter;
+    planetRowRenderHolders.mass.textContent = planet.mass;
+    planetRowRenderHolders.orbitalPeriod.textContent = planet.orbitalPeriod;
+    planetRowRenderHolders.moons.textContent = planet.moons;
+    planetRowRenderHolders.type.textContent = planet.type;
+    planetRowRenderHolders.typeBackGround.classList.add(...(planet.typeBackGround))
+
+    return planetRow
+}
+
+function toYearsIfNeed(dayes) {
+
+    let result = dayes + " dayes"
+    if (dayes >= 30) {
+        const monthes = dayes /= 30
+        result = monthes.toFixed(1) + " monthes"
+        if (monthes >= 12) {
+            const years = monthes / 12
+            result = years.toFixed(1) + " years"
+        }
+    }
+    return result
+
+}
+
+
+function createPlanetsObj(planets) {
+    const returnedPlanets = {}
+    for (const planet of planets) {
+        const newPlanet = {
+            backGround: planetColors[planet.englishName.toLowerCase() ?? "non"],
+            name: planet.englishName ?? "not there",
+            distance: ((planet.semimajorAxis ?? 0) / 149_597_870.7).toFixed(2),
+            diameter: ((planet.meanRadius ?? 0) * 2).toFixed(3),
+            mass: (planet.mass.massValue ?? 0) * 10 ** (planet.mass.massExponent ?? 0),
+            orbitalPeriod: toYearsIfNeed(planet.sideralOrbit ?? 0),
+            moons: planet.moons?.length ?? 0,
+            type: planet.type ?? "not there",
+            typeBackGround: planetType[planet.type ?? "non"].background,
+            image: imageSrc[planet.englishName.toLowerCase()],
+            description: planet.description ?? "not description",
+            semimajorAxis: ((planet.semimajorAxis ?? 0) / 1000_000) + " M km",
+            meanRadius: ((planet.meanRadius ?? 0).toLocaleString()) + " km",
+            massHTML: `${planet.mass.massValue} × 10<sup>${planet.mass.massExponent}</sup> kg`,
+            densityHTML: `${planet.density} g/cm<sup>3</sup>`,
+            planetRotation: Math.abs(planet.sideralRotation) + " h",
+            gravityHTML: `${planet.gravity} m/s<sup>2</sup>`,
+            volumeHTML: `${planet.vol.volValue} × 10<sup>${planet.vol.volExponent}</sup> kg`,
+            discoveryDate: planet.discoveryDate || "Ancient times",
+            discoverer: planet.discoveredBy || "Known since antiquity",
+            bodyType: planet.bodyType,
+            perihelion: ((planet.perihelion ?? 0) / 1_000_000).toFixed(1) + " M km",
+            aphelion: ((planet.aphelion ?? 0) / 1_000_000).toFixed(1) + " M km",
+            eccentricity: planet.eccentricity ?? "N/A",
+            inclination: (planet.inclination ?? 0) + "°",
+            axialTilt: (planet.axialTilt ?? 0) + "°",
+            avgTempCelsius: ((planet.avgTemp ?? 0) - 273.15).toFixed(1) + " °C",
+            escapeVelocity: ((planet.escape ?? 0) / 1000).toFixed(2) + " km/s",
+        }
+        console.log(`____________________${planet.englishName}__________________`, planet.discoveryDate)
+        console.log(`____________________${planet.englishName}__________________`, planet.discoveredBy)
+        returnedPlanets[`${(newPlanet.name).toLowerCase()}`] = newPlanet
+    }
+    return returnedPlanets
+}
+
+function renderPlanetPage(planets, name) {
+    const planet = planets[name]
+    const {
+        planetImage,
+        planetName,
+        planetDescription,
+        planetDistance,
+        planetRadius,
+        planetMass,
+        planetDensity,
+        planetOrbitalPeriod,
+        planetRotation,
+        planetMoons,
+        planetGravity,
+        planetDiscoverer,
+        planetDiscoveryDate,
+        planetBodyType,
+        planetVolume,
+        planetPerihelion,
+        planetAphelion,
+        planetEccentricity,
+        planetInclination,
+        planetAxialTilt,
+        planetTemp,
+        planetEscape,
+        quickFacts
+    } = renderHolders
+    const {
+        name: pName,
+        distance,
+        orbitalPeriod,
+        moons,
+        image,
+        description,
+        meanRadius,
+        massHTML,
+        densityHTML,
+        planetRotation: rotation,
+        gravityHTML,
+        volumeHTML,
+        discoveryDate,
+        discoverer,
+        bodyType,
+        perihelion,
+        aphelion,
+        eccentricity,
+        inclination,
+        axialTilt,
+        avgTempCelsius,
+        escapeVelocity
+    } = planet
+
+
+    planetImage.src = "./assets/" + image
+    planetName.textContent = pName
+    planetDescription.textContent = description
+    planetDistance.textContent = distance + " AU"
+    planetRadius.textContent = meanRadius
+    planetMass.innerHTML = massHTML
+    planetDensity.innerHTML = densityHTML
+    planetOrbitalPeriod.textContent = orbitalPeriod
+    planetRotation.textContent = rotation
+    planetMoons.textContent = moons
+    planetGravity.innerHTML = gravityHTML
+    planetDiscoverer.textContent = discoverer
+    planetDiscoveryDate.textContent = discoveryDate
+    planetBodyType.textContent = bodyType
+    planetVolume.innerHTML = volumeHTML
+    planetPerihelion.textContent = perihelion
+    planetAphelion.textContent = aphelion
+    planetEccentricity.textContent = eccentricity
+    planetInclination.textContent = inclination
+    planetAxialTilt.textContent = axialTilt
+    planetTemp.textContent = avgTempCelsius
+    planetEscape.textContent = escapeVelocity
+    quickFacts.planetMass.innerHTML = "Mass: " + massHTML
+    quickFacts.planetSurfaceGravity.innerHTML = "Surface gravity: " + gravityHTML
+    quickFacts.planetDensity.innerHTML = "Density: " + densityHTML
+    quickFacts.planetAxialTilt.textContent = "Axial tilt: " + axialTilt
+}
+
+const activePlanetGrid = document.querySelector("#planets-grid")
+
+getIt("", "https://solar-system-opendata-proxy.vercel.app/api/planets").then((data) => {
+    console.log("----data of planets-----\n", data)
+    const results = data.bodies
+    const planets = createPlanetsObj(results)
+    console.log(planets)
+
+    // تغيير عشان الجدول
+    const ref = planets.earth.mass
+    for (const one of Object.values(planets)) {
+        one.mass = (one.mass / ref).toFixed(2)
+    }
+    const tableBody = document.querySelector('#planet-comparison-tbody')
+    tableBody.innerHTML = "";
+    for (const planet of Object.values(planets)) {
+        console.log(renderRow(planet))
+        tableBody.appendChild(renderRow(planet))
+    }
+    // الجدول خلص
+    // بقية الصفحة
+    activePlanetGrid.addEventListener("click", (e) => {
+        const targetPlanet = e.target.closest("[data-planet-id]")
+        const activePlanet = targetPlanet.getAttribute("data-planet-id")
+        renderPlanetPage(planets, activePlanet)
+    })
+})

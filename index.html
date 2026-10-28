@@ -16,7 +16,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" crossorigin href="./assets/css/style.css" />
+    <link rel="stylesheet" crossorigin href="./assests/css/output.css" />
+    <link rel="stylesheet" crossorigin href="./assets/css/style.css" />
 </head>
 
 <body class="bg-linear-to-br from-space-dark via-slate-900 to-space-blue font-inter text-white">
@@ -234,7 +235,8 @@
                       <i class="fas fa-star"></i>
                       Featured Launch
                     </span>
-                    <span id = "coming-abbrev" class="px-4 py-1.5 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold">
+                    <span id="coming-abbrev"
+                      class="px-4 py-1.5 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold">
                       Go
                     </span>
                   </div>
@@ -326,22 +328,26 @@
         </div>
         <div id="launches-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- STATIC LAUNCH CARD 1 -->
-          <div
+          <div id="main-card"
             class="bg-slate-800/50 border border-slate-700 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all group cursor-pointer">
             <div class="relative h-48 bg-slate-900/50 flex items-center justify-center">
-              <i class="fas fa-space-shuttle text-5xl text-slate-700"></i>
+              <img id="card-coming-img" src="/images/launch-placeholder.png" alt="name"
+                class="w-full h-full object-cover"
+                onerror="this.onerror=null; this.src='/images/launch-placeholder.png';">
               <div class="absolute top-3 right-3">
-                <span class="px-3 py-1 bg-green-500/90 text-white backdrop-blur-sm rounded-full text-xs font-semibold">
+                <span id="card-abbrev"
+                  class="px-3 py-1 bg-green-500/90 text-white backdrop-blur-sm rounded-full text-xs font-semibold">
                   Go
                 </span>
               </div>
             </div>
             <div class="p-5">
               <div class="mb-3">
-                <h4 class="font-bold text-lg mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">
+                <h4 id="card-name"
+                  class="font-bold text-lg mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">
                   Falcon 9 Block 5 | Starlink Group 6-44
                 </h4>
-                <p class="text-sm text-slate-400 flex items-center gap-2">
+                <p id="card-service-provider" class="text-sm text-slate-400 flex items-center gap-2">
                   <i class="fas fa-building text-xs"></i>
                   SpaceX
                 </p>
@@ -349,19 +355,19 @@
               <div class="space-y-2 mb-4">
                 <div class="flex items-center gap-2 text-sm">
                   <i class="fas fa-calendar text-slate-500 w-4"></i>
-                  <span class="text-slate-300">Mar 15, 2024</span>
+                  <span id="card-lunch-date" class="text-slate-300">Mar 15, 2024</span>
                 </div>
                 <div class="flex items-center gap-2 text-sm">
                   <i class="fas fa-clock text-slate-500 w-4"></i>
-                  <span class="text-slate-300">23:00 UTC</span>
+                  <span id="card-lunch-time" class="text-slate-300">23:00 UTC</span>
                 </div>
                 <div class="flex items-center gap-2 text-sm">
                   <i class="fas fa-rocket text-slate-500 w-4"></i>
-                  <span class="text-slate-300">Falcon 9</span>
+                  <span id="card-rocket" class="text-slate-300">Falcon 9</span>
                 </div>
                 <div class="flex items-center gap-2 text-sm">
                   <i class="fas fa-map-marker-alt text-slate-500 w-4"></i>
-                  <span class="text-slate-300 line-clamp-1">KSC, LC-39A</span>
+                  <span id="card-location" class="text-slate-300 line-clamp-1">KSC, LC-39A</span>
                 </div>
               </div>
               <div class="flex items-center gap-2 pt-4 border-t border-slate-700">
@@ -375,106 +381,7 @@
               </div>
             </div>
           </div>
-          <!-- STATIC LAUNCH CARD 2 -->
-          <div
-            class="bg-slate-800/50 border border-slate-700 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all group cursor-pointer">
-            <div class="relative h-48 bg-slate-900/50 flex items-center justify-center">
-              <i class="fas fa-rocket text-5xl text-slate-700"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-3 py-1 bg-yellow-500/90 text-white backdrop-blur-sm rounded-full text-xs font-semibold">
-                  TBC
-                </span>
-              </div>
-            </div>
-            <div class="p-5">
-              <div class="mb-3">
-                <h4 class="font-bold text-lg mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">
-                  Electron | "Owl Night Long"
-                </h4>
-                <p class="text-sm text-slate-400 flex items-center gap-2">
-                  <i class="fas fa-building text-xs"></i>
-                  Rocket Lab
-                </p>
-              </div>
-              <div class="space-y-2 mb-4">
-                <div class="flex items-center gap-2 text-sm">
-                  <i class="fas fa-calendar text-slate-500 w-4"></i>
-                  <span class="text-slate-300">Mar 16, 2024</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm">
-                  <i class="fas fa-clock text-slate-500 w-4"></i>
-                  <span class="text-slate-300">09:15 UTC</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm">
-                  <i class="fas fa-rocket text-slate-500 w-4"></i>
-                  <span class="text-slate-300">Electron</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm">
-                  <i class="fas fa-map-marker-alt text-slate-500 w-4"></i>
-                  <span class="text-slate-300 line-clamp-1">Mahia Peninsula, NZ</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-2 pt-4 border-t border-slate-700">
-                <button
-                  class="flex-1 px-4 py-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors text-sm font-semibold">
-                  Details
-                </button>
-                <button class="px-3 py-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- STATIC LAUNCH CARD 3 -->
-          <div
-            class="bg-slate-800/50 border border-slate-700 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all group cursor-pointer">
-            <div class="relative h-48 bg-slate-900/50 flex items-center justify-center">
-              <i class="fas fa-satellite-dish text-5xl text-slate-700"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-3 py-1 bg-blue-500/90 text-white backdrop-blur-sm rounded-full text-xs font-semibold">
-                  TBD
-                </span>
-              </div>
-            </div>
-            <div class="p-5">
-              <div class="mb-3">
-                <h4 class="font-bold text-lg mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">
-                  Ariane 6 | Maiden Flight
-                </h4>
-                <p class="text-sm text-slate-400 flex items-center gap-2">
-                  <i class="fas fa-building text-xs"></i>
-                  Arianespace
-                </p>
-              </div>
-              <div class="space-y-2 mb-4">
-                <div class="flex items-center gap-2 text-sm">
-                  <i class="fas fa-calendar text-slate-500 w-4"></i>
-                  <span class="text-slate-300">June 2024</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm">
-                  <i class="fas fa-clock text-slate-500 w-4"></i>
-                  <span class="text-slate-300">TBD</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm">
-                  <i class="fas fa-rocket text-slate-500 w-4"></i>
-                  <span class="text-slate-300">Ariane 62</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm">
-                  <i class="fas fa-map-marker-alt text-slate-500 w-4"></i>
-                  <span class="text-slate-300 line-clamp-1">Guiana Space Centre</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-2 pt-4 border-t border-slate-700">
-                <button
-                  class="flex-1 px-4 py-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors text-sm font-semibold">
-                  Details
-                </button>
-                <button class="px-3 py-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -724,19 +631,19 @@
               <ul id="planet-facts" class="space-y-3 text-sm">
                 <li class="flex items-start">
                   <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                  <span class="text-slate-300">Only known planet with liquid water</span>
+                  <span class="text-slate-300" data-field="mass">Only known planet with liquid water</span>
                 </li>
                 <li class="flex items-start">
                   <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                  <span class="text-slate-300">Atmosphere contains 78% nitrogen</span>
+                  <span class="text-slate-300" data-field="surface-gravity">Atmosphere contains 78% nitrogen</span>
                 </li>
                 <li class="flex items-start">
                   <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                  <span class="text-slate-300">Magnetic field protects from solar wind</span>
+                  <span class="text-slate-300" data-field="density">Magnetic field protects from solar wind</span>
                 </li>
                 <li class="flex items-start">
                   <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                  <span class="text-slate-300">Formed 4.54 billion years ago</span>
+                  <span class="text-slate-300" data-field="axial-tilt">Formed 4.54 billion years ago</span>
                 </li>
               </ul>
             </div>
@@ -816,31 +723,39 @@
                 </thead>
                 <tbody id="planet-comparison-tbody" class="divide-y divide-slate-700">
                   <!-- Mercury -->
-                  <tr class="hover:bg-slate-800/30 transition-colors">
+                  <tr class="hover:bg-slate-800/30 transition-colors" data-field="planet-render-row-template">
                     <td class="px-4 md:px-6 py-3 md:py-4 sticky left-0 bg-slate-800 z-10">
                       <div class="flex items-center space-x-2 md:space-x-3">
-                        <div class="w-6 h-6 md:w-8 md:h-8 rounded-full flex-shrink-0" style="background-color: #eab308">
+                        <div class="w-6 h-6 md:w-8 md:h-8 rounded-full flex-shrink-0" style="background-color: #eab308"
+                          data-field="background-color">
                         </div>
-                        <span class="font-semibold text-sm md:text-base whitespace-nowrap">Mercury</span>
+                        <span class="font-semibold text-sm md:text-base whitespace-nowrap"
+                          data-field="name">Mercury</span>
                       </div>
                     </td>
-                    <td class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap">
+                    <td class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
+                      data-field="distance">
                       0.39
                     </td>
-                    <td class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap">
+                    <td class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
+                      data-field="diameter">
                       4,879
                     </td>
-                    <td class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap">
+                    <td class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
+                      data-field="mass">
                       0.055
                     </td>
-                    <td class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap">
+                    <td class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
+                      data-field="orbital-period">
                       88 days
                     </td>
-                    <td class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap">
+                    <td class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
+                      data-field="moons">
                       0
                     </td>
                     <td class="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap">
-                      <span class="px-2 py-1 rounded text-xs bg-orange-500/50 text-orange-200">Terrestrial</span>
+                      <span class="px-2 py-1 rounded text-xs bg-orange-500/50 text-orange-200"
+                        data-field="type">Terrestrial</span>
                     </td>
                   </tr>
                   <!-- Venus -->
